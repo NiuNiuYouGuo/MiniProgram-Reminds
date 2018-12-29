@@ -1,0 +1,60 @@
+{
+	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"appid": "wx9066ec1a6db11b04",
+	"projectname": "biyesheji",
+	"libVersion": "2.4.3",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "add",
+					"pathName": "pages/add/add",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "info",
+					"pathName": "pages/info/info",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "complete",
+					"pathName": "pages/complete/complete",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "deleteorcomplete",
+					"pathName": "pages/deleteorcomplete/deleteorcomplete",
+					"query": ""
+				}
+			]
+		}
+	}
+}

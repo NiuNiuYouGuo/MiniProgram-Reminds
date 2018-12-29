@@ -1,0 +1,37 @@
+<view class='page'>
+
+
+
+  <view class='page__hd' bindtap='toindex' bindlongpress='todeleteorcomplete'>
+    <view class='page__title'>回味</view>
+    <view class='page__desc'>每一份辛勤</view>
+  </view>
+
+  <view class='page__bd_spacing'>
+
+
+    <block wx:for='{{bwl}}' wx:key='{{index}}'>
+      <view class='kind-list__item' data-id='{{item._id}}' bindtap='toinfo' bindlongpress='deleteitem'>
+        <view class='weui-flex kind-list__item-hd'>
+          <view class='weui-flex__item'>{{item.title}}</view>
+
+          <view wx:if='{{item.isdoing}}'>
+          <view catchtap='setcount' data-id='{{item._id}}'>
+            <image class='img' src='../../images/doing{{item.isdoing}}.png'></image>
+          </view>
+          </view>
+          <view wx:else>
+          <view catchtap='setnotcomplete' data-id='{{item._id}}'>
+            <image class='img' src='../../images/done{{item.isdone}}.png'></image>
+          </view>
+          </view>
+
+        </view>
+      </view>
+    </block>
+
+  </view>
+
+
+
+</view>

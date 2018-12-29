@@ -1,0 +1,133 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <!-- tab1 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class='page__bd_spacing'>
+            <view class="weui-btn-area">
+              <button class='button' size='mini' bindtap='deleteall'>DA</button>
+              <button class='button' size='mini' bindtap='deleteselect'>DS</button>
+              <button class='button' size='mini' bindtap='deletecancel'>DC</button>
+            </view>
+          </view>
+
+          <view class='page__bd_spacing'>
+
+            <block wx:for='{{bwl}}' wx:key='{{index}}'>
+              <view class='kind-list__item' data-id='{{item._id}}' bindtap='toinfo' bindlongpress='deleteitem'>
+                <view class='weui-flex kind-list__item-hd'>
+                  <view class='weui-flex__item'>{{item.title}}</view>
+                  <icon data-id='{{item._id}}' catchtap='setdelete' class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.isdeleteing}}"></icon>
+                  <icon data-id='{{item._id}}' catchtap='setnotdelete' class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.isdeleteing}}"></icon>
+                </view>
+              </view>
+            </block>
+
+          </view>
+        </view>
+        <!-- tab1 -->
+        <!-- tab2 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class='page__bd_spacing'>
+            <view class="weui-btn-area">
+              <button class='button' size='mini' bindtap='deletedoing'>DA</button>
+              <button class='button' size='mini' bindtap='deleteselect'>DS</button>
+              <button class='button' size='mini' bindtap='deletecancel'>DC</button>
+            </view>
+          </view>
+          
+          <view class='page__bd_spacing'>
+
+            <block wx:for='{{bwl}}' wx:key='{{index}}'>
+              <block wx:if='{{item.isdone}}' wx:key='{{index}}'></block>
+              <block wx:else>
+                <block wx:if='{{item.isdoing}}' wx:key='{{index}}'>
+                  <view class='kind-list__item' data-id='{{item._id}}' bindtap='toinfo' bindlongpress='deleteitem'>
+                    <view class='weui-flex kind-list__item-hd'>
+                      <view class='weui-flex__item'>{{item.title}}</view>
+                      <icon data-id='{{item._id}}' catchtap='setdelete' class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.isdeleteing}}"></icon>
+                      <icon data-id='{{item._id}}' catchtap='setnotdelete' class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.isdeleteing}}"></icon>
+                    </view>
+                  </view>
+                </block>
+                <block wx:else>
+                </block>
+              </block>
+            </block>
+
+          </view>
+        </view>
+        <!-- tab2 -->
+        <!-- tab3 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <view class='page__bd_spacing'>
+            <view class="weui-btn-area">
+              <button class='button' size='mini' bindtap='deletenotdone'>DA</button>
+              <button class='button' size='mini' bindtap='deleteselect'>DS</button>
+              <button class='button' size='mini' bindtap='deletecancel'>DC</button>
+            </view>
+          </view>
+
+          <view class='page__bd_spacing'>
+
+            <block wx:for='{{bwl}}' wx:key='{{index}}'>
+              <block wx:if='{{item.isdone}}' wx:key='{{index}}'></block>
+              <block wx:else>
+                <block wx:if='{{item.isdoing}}' wx:key='{{index}}'></block>
+                <block wx:else>
+                  <view class='kind-list__item' data-id='{{item._id}}' bindtap='toinfo' bindlongpress='deleteitem'>
+                    <view class='weui-flex kind-list__item-hd'>
+                      <view class='weui-flex__item'>{{item.title}}</view>
+                      <icon data-id='{{item._id}}' catchtap='setdelete' class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.isdeleteing}}"></icon>
+                      <icon data-id='{{item._id}}' catchtap='setnotdelete' class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.isdeleteing}}"></icon>
+                    </view>
+                  </view>
+                </block>
+              </block>
+            </block>
+
+          </view>
+        </view>
+        <!-- tab3 -->
+        <!-- tab4 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
+          <view class='page__bd_spacing'>
+            <view class="weui-btn-area">
+              <button class='button' size='mini' bindtap='deletedone'>DA</button>
+              <button class='button' size='mini' bindtap='deleteselect'>DS</button>
+              <button class='button' size='mini' bindtap='deletecancel'>DC</button>
+            </view>
+          </view>
+
+          <view class='page__bd_spacing'>
+
+            <block wx:for='{{bwl}}' wx:key='{{index}}'>
+              <block wx:if='{{item.isdone}}' wx:key='{{index}}'>
+                <view class='kind-list__item' data-id='{{item._id}}' bindtap='toinfo' bindlongpress='deleteitem'>
+                  <view class='weui-flex kind-list__item-hd'>
+                    <view class='weui-flex__item'>{{item.title}}</view>
+                    <icon data-id='{{item._id}}' catchtap='setdelete' class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.isdeleteing}}"></icon>
+                    <icon data-id='{{item._id}}' catchtap='setnotdelete' class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.isdeleteing}}"></icon>
+                  </view>
+                </view>
+              </block>
+              <block wx:else>
+              </block>
+            </block>
+
+          </view>
+        </view>
+        <!-- tab4 -->
+      </view>
+    </view>
+  </view>
+</view>

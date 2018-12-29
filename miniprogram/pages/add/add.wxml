@@ -1,0 +1,115 @@
+<!--pages/add/add.wxml-->
+<view class='page'>
+
+
+  <view class="weui-cells__title">描述事件</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">标题</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入标题" bindinput='inputTitle' />
+      </view>
+    </view>
+  </view>
+
+
+
+  <view class="weui-cells__title">描述内容</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="请输入事件内容" style="height: 3.3em" bindinput='inputDetail' />
+        <view class="weui-textarea-counter">{{inputDetailcursor}}/140</view>
+      </view>
+    </view>
+  </view>
+
+
+
+  <view class="weui-cells__title">预期完成时间（默认十五分钟）</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">日期</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="date" value="{{date}}" start="2018-12-20" bindchange="bindDateChange">
+          <view class="weui-input">{{date}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">时间</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
+          <view class="weui-input">{{time}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="weui-cells__title">个性化设置</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">打卡模式</view>
+      <view class="weui-cell__ft">
+        <switch bindchange='isDoingSwitch' />
+      </view>
+    </view>
+  </view>
+
+
+
+
+  <view class="page__bd">
+    <view class="weui-cells">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__title">图片上传</view>
+              <view class="weui-uploader__info">{{files.length}}</view>
+            </view>
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files" id="uploaderFiles">
+                <block wx:for="{{files}}" wx:key="*this">
+                  <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}" data-id='{{index}}' bindlongpress='previewImagedelete'>
+                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                  </view>
+                </block>
+
+              </view>
+             <block wx:if='{{files.length<1}}'><view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage">1</view>
+              </view></block>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- <view class="imagegrids">
+      <block wx:for="{{tempFilePaths}}" wx:for-item='i' wx:key="{{index}}">
+        <view class="imagegrid">
+          <image style='width:249rpx;height:249rpx' src="{{i}}" />
+        </view>
+      </block>
+    </view> -->
+
+
+</view>
+
+
+<view class='page__bd_spacing'>
+  <view class="weui-btn-area">
+    <button bindtap='add'>add</button>
+  </view>
+
+</view>

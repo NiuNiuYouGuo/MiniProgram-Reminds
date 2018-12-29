@@ -1,0 +1,31 @@
+.img {
+  width: 30px;
+  height: 30px;
+}
+
+.add {
+  position: fixed;
+  width: 120rpx;
+  height: 120rpx;
+  bottom: 50rpx;
+  right: 50rpx;
+}
+
+.weui-flex {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.kind-list__item {
+  margin: 10px 0;
+  background-color: #fff;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.kind-list__item-hd {
+  padding: 20px;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
